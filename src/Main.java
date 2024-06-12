@@ -1,5 +1,7 @@
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -151,6 +153,46 @@ public class Main {
 
         String ASAD = add(AS, AD);
         System.out.println(ASAD);
+
+        System.out.println("--- 익명 함수 ---");
+
+        Person person = new Person("오현택", 31){
+            @Override
+            public void setName(String name){
+                System.out.println(name);
+            }
+        };
+
+        person.setName("오현택");
+
+        System.out.println("--- 람다식 ---");
+
+
+        System.out.println("--- 람다식 인터페이스 ---");
+        Colculate add = (x, y, z) -> x + y + z;
+        int result = add.calculate(1, 2, 3);
+
+        System.out.println("--- 스트림 ---");
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5);
+        numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .map(n -> n / 1)
+                .forEach(System.out::println);
+
+
+        try{
+            throw new CustomExceptions("코드 확인해봄 ????");
+        }catch(CustomExceptions e){
+            System.out.println(e.getMessage());
+        }
+
+
+        System.out.println("--- 쓰레드 ---");
+        System.out.println("--- Runnable ---");
+        System.out.println("--- join ---");
+        System.out.println("--- 다중 쓰레드 ---");
+        System.out.println("--- 동기화 ---");
+
     }
 
     public static String add(String a, String b){
